@@ -1,38 +1,62 @@
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import './CountryDetails.css'
 
 const CountryDetails = () => {
   let { code } = useParams();
   const [myData, setMyData] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchCountry()
+    fetchCountry();
   }, [code]);
 
   const fetchCountry = async () => {
-  await axios 
+    await axios
       .get(`https://ih-countries-api.herokuapp.com/countries/${code}`)
       .then((response) => {
-      setMyData(response.data);
-      setLoading(true)})
-  }
+        setMyData(response.data);
+        setLoading(true);
+      });
+  };
 
-
-  console.log(myData);
+  // console.log(myData);
 
   return (
-    <div>
-    {loading && myData.alpha2Code  && (
+    <div className = 'countryDetails'>
+      {loading && myData.alpha2Code && (
         <>
-      <img src={`https://flagpedia.net/data/flags/w580/${myData.alpha2Code.toLowerCase()}.png`} alt='littleflag' /> 
-      <h1>{myData.name.common}</h1>
-      <p>Capital: {myData.capital}</p>
-      <p>Area: {myData.area} km2 </p>
-
-</>
-    )}
+          <img
+            src={`https://flagpedia.net/data/flags/w580/${myData.alpha2Code.toLowerCase()}.png`}
+            alt="littleflag"
+          />
+          <h1>{myData.name.common}</h1>
+          <table className="table">
+            <tr>
+              <td>Capital</td><td> {myData.capital}</td>
+            </tr>
+            <tr>
+              <td>Area</td> <td>{myData.area} km<sup>2</sup>{' '}
+              </td>
+            </tr>
+            <tr>
+              <td>Borders</td>
+              <td>
+                <ul>
+                  {myData.borders.length > 0 ? (
+                    myData.borders.map((e) => {
+                      return <li> {e}</li>;
+                    })
+                  ) : (
+                    <p>No borders</p>
+                  )}
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </>
+      )}
     </div>
   );
 };

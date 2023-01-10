@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import CountryDetails from './components/CountryDetails';
 
 function App() {
+
   return (
     <>
       <Navbar />
@@ -14,7 +15,7 @@ function App() {
         </div>
         <div className="details">
           <Routes>
-            <Route path="/countries/:code" element={<CountryDetails  />} />
+            <Route path="/countries/:code" element={<CountryDetails />} />
           </Routes>
         </div>
       </div>

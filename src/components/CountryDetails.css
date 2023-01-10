@@ -1,0 +1,25 @@
+.countryDetails{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countryDetails img{
+    width: 50%;
+    height: 50%;
+}
+
+table{
+    border: 1px solid black;
+    text-align: center
+}
+
+td{
+    border: 1px solid black;
+}
+
+h1{
+margin: auto
+}

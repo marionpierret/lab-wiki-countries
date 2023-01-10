@@ -17,7 +17,7 @@ a.name.common < b.name.common ? -1 : 1)
   }, []);
 
   return (
-    <div className = "list">
+    <div className = "list" style={{maxHeight: "90vh", overflow: "scroll"}}>
       {countriesDescending.map((e, i) => {
         return (
           <div key={e._id}>

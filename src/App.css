@@ -13,8 +13,19 @@
 
 .row{
   text-align: center;
+  overflow: auto;
+  text-decoration: none;
+  color: black;
 }
 
 .details{
-margin: 200px 100px
+width: 600px;
+height: 600px;
+margin: 20px 100px;
+display: flex;
+align-items: center;
+}
+
+.row img{
+  width: 20%;
 }
